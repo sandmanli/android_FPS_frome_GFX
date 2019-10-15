@@ -1,0 +1,17 @@
+var min=254279.228;
+var max=254284.5;
+var start_time = [254279.345, 254280.913, 254282.532, 254283.733, 254280.312, 254280.93, 254280.963, 254279.228, 254283.633];
+var end_time = [254280.312, 254282.532, 254283.366, 254284.4, 254280.829, 254280.947, 254281.197, 254280.713, 254284.5];
+var FPS = [30.0, 36.7, 50.4, 30.0, 3.9, 58.7, 60.0, 28.2, 12.7];
+var score = [56.01, 62.82, 87.12, 55.49, 19.89, 98.7, 100.0, 58.93, 35.32];
+var frames = [29, 38, 42, 20, 2, 1, 14, 8, 11];
+var Time = [0.967, 1.035, 0.834, 0.667, 0.517, 0.017, 0.234, 0.283, 0.868];
+var max_time = [283.72, 300.808, 116.798, 333.657, 333.619, 17.037, 16.779, 166.883, 450.476];
+var waiting_time = [0.0, 0.584, 0.0, 0.0, 0.0, 0.0, 0.0, 1.201, 0.0];
+var wait_times = [0, 1, 0, 0, 0, 0, 0, 1, 0];
+var A = [3, 2, 1, 1, 2, 0, 0, 1, 2];
+var B = [0, 0, 1, 0, 0, 0, 0, 0, 0];
+var C = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+var D = [26, 7, 3, 3, 1, 2, 5, 3, 3];
+var TX = [0, 0, 0, 1, 0, 1, 1, 1, 0];
+var Surface = ['com.qq.ac.android/com.qq.ac.android.view.activity.SplashActivity#0', 'com.qq.ac.android/com.qq.ac.android.view.activity.MainActivity#0', 'com.qq.ac.android/com.qq.ac.android.view.activity.MainActivity#0', 'com.huawei.android.FloatTasks.views.FloatView#0', 'com.qq.ac.android/com.qq.ac.android.view.activity.SplashActivity#0', 'StatusBar#0', 'com.qq.ac.android/com.qq.ac.android.view.activity.MainActivity#0', 'com.qq.ac.android/com.qq.ac.android.view.activity.SplashActivity#0', 'com.huawei.android.FloatTasks.views.FloatView#0'];

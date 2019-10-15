@@ -1,0 +1,17 @@
+var min=254290.773;
+var max=254301.099;
+var start_time = [254291.857, 254294.543, 254296.011, 254297.146, 254296.562, 254298.597, 254300.299, 254300.549, 254295.844, 254295.511, 254299.598, 254295.544, 254297.496, 254296.929, 254291.473, 254290.806, 254290.773, 254291.49, 254290.906];
+var end_time = [254294.543, 254295.494, 254296.562, 254297.496, 254298.597, 254299.598, 254301.083, 254300.966, 254295.995, 254295.828, 254301.099, 254300.749, 254299.581, 254297.129, 254295.343, 254291.44, 254290.789, 254300.632, 254291.406];
+var FPS = [47.5, 35.7, 43.6, 59.9, 27.0, 21.0, 26.8, 50.3, 59.9, 37.8, 24.9, 42.8, 6.7, 49.9, 29.2, 14.2, 59.7, 40.0, 8.0];
+var score = [84.21, 68.22, 82.72, 99.9, 64.28, 57.05, 50.76, 89.97, 99.9, 76.96, 52.65, 82.33, 30.02, 89.2, 60.08, 38.86, 99.7, 78.25, 81.72];
+var frames = [65, 34, 24, 21, 36, 21, 21, 21, 9, 12, 17, 15, 14, 10, 18, 9, 1, 4, 4];
+var Time = [1.368, 0.951, 0.55, 0.35, 1.335, 1.001, 0.784, 0.417, 0.15, 0.317, 0.684, 0.35, 2.085, 0.2, 0.617, 0.634, 0.017, 0.1, 0.5];
+var max_time = [116.818, 150.193, 83.37, 16.834, 66.754, 66.769, 450.52, 50.034, 16.724, 100.041, 200.212, 83.447, 150.202, 50.105, 166.85, 250.266, 16.739, 50.034, 216.9];
+var waiting_time = [1.318, 0.0, 0.0, 0.0, 0.701, 0.0, 0.0, 0.0, 0.0, 0.0, 0.817, 4.855, 0.0, 0.0, 3.253, 0.0, 0.0, 9.042, 0.0];
+var wait_times = [2, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 3, 0, 0, 1, 0, 0, 4, 0];
+var A = [2, 2, 0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 14, 0, 2, 3, 0, 0, 3];
+var B = [1, 1, 3, 0, 14, 11, 0, 1, 0, 0, 4, 1, 0, 1, 0, 0, 0, 1, 0];
+var C = [0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var D = [16, 7, 11, 4, 19, 12, 5, 5, 2, 5, 11, 4, 13, 1, 12, 5, 2, 2, 3];
+var TX = [0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0];
+var Surface = ['com.comic.manhuatai/com.wbxm.icartoon.ui.GuideActivity#0', 'com.comic.manhuatai/com.wbxm.icartoon.ui.GuideActivity#0', 'com.comic.manhuatai/com.comic.manhuatai.MHTMainActivity#1', 'com.comic.manhuatai/com.comic.manhuatai.MHTMainActivity#2', 'com.comic.manhuatai/com.comic.manhuatai.MHTMainActivity#1', 'com.comic.manhuatai/com.comic.manhuatai.MHTMainActivity#1', 'com.huawei.android.FloatTasks.views.FloatView#0', 'com.huawei.android.FloatTasks.views.FloatView#0', 'com.comic.manhuatai/com.comic.manhuatai.MHTMainActivity#0', 'com.comic.manhuatai/com.comic.manhuatai.MHTMainActivity#0', 'com.comic.manhuatai/com.comic.manhuatai.MHTMainActivity#1', 'com.comic.manhuatai/com.comic.manhuatai.MHTMainActivity#1', 'com.comic.manhuatai/com.comic.manhuatai.MHTMainActivity#2', 'com.comic.manhuatai/com.comic.manhuatai.MHTMainActivity#2', 'com.comic.manhuatai/com.wbxm.icartoon.ui.GuideActivity#0', 'com.comic.manhuatai/com.wbxm.icartoon.ui.CoverActivity#0', 'GestureNavRight#0', 'StatusBar#0', 'com.comic.manhuatai/com.wbxm.icartoon.ui.CoverActivity#0'];

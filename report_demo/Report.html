@@ -1,0 +1,182 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="head/jquery.multiselect.css" />
+<link rel="stylesheet" type="text/css" href="head/jquery.multiselect.filter.css" />
+<link rel="stylesheet" type="text/css" href="head/jquery-ui.css" />
+<link rel="stylesheet" type="text/css" href="head/style.css" />
+<script type="text/javascript" src="head/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="head/highcharts-4.2.1.js"></script>
+<script type="text/javascript" src="head/jquery-ui.min.js"></script>
+<script type="text/javascript" src="head/jquery.multiselect.js"></script>
+<script type="text/javascript" src="head/jquery.multiselect.filter.js"></script>
+<script type="text/javascript" src="head/theme.js"></script>
+<script type="text/javascript" src="head/jquery.tablesorter.js"></script>
+<script type="text/javascript" src="head/function.js"></script>
+<script type="text/javascript" src="head/monitor.js"></script>
+<script type="text/javascript" src="head/charts.js"></script>
+<script type="text/javascript" src="data/list.js"></script>
+
+</head>
+
+<script>
+
+var Package=0
+var monitor=0
+var SurfaceView = list[Package][1][monitor]
+var datajs="data/" + Package + ".js"
+var TX_N=0
+
+$.ajaxSetup({cache: true});
+
+window.onscroll=function(){ 
+	var t=document.documentElement.scrollTop||document.body.scrollTop;
+	var div2=document.getElementById("div2");
+	if(t>=50){ 
+		div2.className="div2_1";
+	}else{
+		div2.className="div2";
+	} 
+}
+
+$(function(){
+	$("#theme_select").multiselect({
+		multiple: false,
+		header: false,
+		noneSelectedText: "选择主题",
+		minWidth: 150,
+		height: 238,
+		selectedList: 1,
+	});
+});
+
+$(function(){
+	$("#TX").multiselect({
+		multiple: false,
+		header: false,
+		noneSelectedText: "选择TX",
+		minWidth: 50,
+		height: 60,
+		selectedList: 1,
+	});
+});
+
+$(function(){
+	var el=$("#Package_select").multiselect({
+		multiple: false,
+		noneSelectedText: "选择包名",
+		minWidth: 235,
+		height: 110,
+		selectedList: 1,
+	}).multiselectfilter({
+		label: '查找:',
+		placeholder: '输入关键字',
+		autoReset: true
+	});
+	for (var i=0; i < list.length; i++){
+		var v=list[i][0], opt=$('<option />', {
+			value: i,
+			text: v
+		});
+		opt.appendTo(el);
+		if(i==0){
+			opt.attr('selected',true);
+		}
+	};
+	el.multiselect('refresh');
+	Monitor(0,0);
+});
+
+function Monitor(n,P){
+	var el=$("#Surface_select").multiselect({
+		multiple: false,
+		noneSelectedText: "选择Surface",
+		minWidth: 700,
+		height: 110,
+		selectedList: 1,
+	}).multiselectfilter({
+		label: '查找:',
+		placeholder: '输入关键字',
+		autoReset: true
+	});
+	for (var i=0; i < list[n][1].length; i++){
+		var v=list[n][1][i], opt=$('<option />', {
+			value: i,
+			text: v
+		});
+		opt.appendTo(el);
+		if(i==P){
+			opt.attr('selected',true);
+		}
+	};
+	el.multiselect('refresh');
+	SurfaceView = list[Package][1][monitor];
+}
+
+function ChangeTX(option){
+	TX_N=option.value;
+	GFX(SurfaceView);
+}
+
+function ChangePackage(option){
+	Package=option.value;
+	$("#Surface_select").empty();
+	Monitor(Package,0);
+	datajs="data/" + Package + ".js";
+	SurfaceView = list[Package][1][monitor];
+	charts();
+}
+
+function charts(){
+	$.getScript(datajs,function(){
+		GFX(SurfaceView)
+	});
+}
+
+function ChangeMonitor(option){
+	monitor=option.value;
+	$("#Surface_select").empty();
+	Monitor(Package,monitor);
+	SurfaceView = list[Package][1][monitor];
+	console.log(SurfaceView);
+	GFX(SurfaceView);
+}
+
+$(document).ready(function(){
+	Highcharts.setOptions(themeArr[4]);
+	charts()
+})
+
+
+</script>
+
+<body bgColor="#DCDCDC">
+<div class="div1">
+	<div id="div2" class="div2">
+		<div class="div3_2">
+			TX：
+			<select id="TX" onchange="ChangeTX(this)">
+				<option value="0" selected>0</option>
+				<option value="1">1</option>
+			</select></div>
+		<div class="div3_2">包名：<select id="Package_select" multiple="multiple" size="5"  onchange="ChangePackage(this)"></select></div>
+		<div id="monitor" class="div3_2">Surface：<select id="Surface_select" multiple="multiple" size="5"  onchange="ChangeMonitor(this)"></select></div>
+		<div class="div3_1">
+			选择主题：
+			<select id="theme_select" onchange="ChangeThemes(this)">
+				<option value="0">默认</option>
+				<option value="1">深蓝 (dark-blue)</option>
+				<option value="2">深绿 (dark-green)</option>
+				<option value="3">dark-unica</option>
+				<option value="4" selected>灰色(gray)</option>
+				<option value="5">网格(grid)</option>
+				<option value="6">grid-light</option>
+				<option value="7">sand-signika</option>
+				<option value="8">天空(skies)</option>
+			</select>
+		</div>
+	</div>
+	<div id="GFX" class="div4"></div>
+</div>
+</body>
+</html>
