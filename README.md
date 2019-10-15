@@ -4,7 +4,7 @@
   
 设计原理：
 ------
-*数据来源systrace GFX 的信息  
+数据来源systrace GFX 的信息  
 * 1、获取方式:  
 `adb shell cat /sys/kernel/debug/tracing/trace_pipe`  
 * 2、开始抓取：  
@@ -12,16 +12,16 @@
 * 3、停止获取：  
 `atrace gfx --async_stop 1>/dev/null`  
 * 4、解析规则：  
-*（1）只处理类别为C和postComposition的信息（postComposition：合成后处理,将图像传递到物理屏幕。）  
-*（2）postComposition前完成的surface信息作为窗口名  
-*（3）`TX - *`格式的信息为app启动、退出。部分Surface更新，按是否存在记录0/1  
-*（4）postComposition之后最近一个Vsync记录绘制时间  
-*（5）帧率统计中，大于500ms的帧间隔不参与，记为静置等待，存储等待总时长和次数  
-*（6）用户体验掉帧区间评估：  
+（1）只处理类别为C和postComposition的信息（postComposition：合成后处理,将图像传递到物理屏幕。）  
+（2）postComposition前完成的surface信息作为窗口名  
+（3）`TX - *`格式的信息为app启动、退出。部分Surface更新，按是否存在记录0/1  
+（4）postComposition之后最近一个Vsync记录绘制时间  
+（5）帧率统计中，大于500ms的帧间隔不参与，记为静置等待，存储等待总时长和次数  
+（6）用户体验掉帧区间评估：  
 	A：\[100ms,500ms)，人眼判断卡顿的认知是：人眼有100ms的缓存，大于100ms才感知为卡顿，  
 	B：\[50ms,100ms)，20帧是游戏最低可玩的底线，再低就完全无法忍了；常见UI的gif动画也是20帧刷新。  
 	C：\[42ms,50ms)，视频体验是24帧录制播放  
-*（7）vsync间隔超过系统的间隔值记录 D  
+（7）vsync间隔超过系统的间隔值记录 D  
   
   
 脚本设计思路：
@@ -41,17 +41,17 @@
 * 监控脚本gfx.sh  
 `adb shell`    
 `sh /data/local/tmp/gfx.sh`    
-GFX()参数说明：  
-* $1 = 目标帧率，默认60  
-* $2 = 评估体验卡顿的把控线，默认100ms  
-* $3 = 输出类型：  
+* GFX()参数说明：  
+$1 = 目标帧率，默认60  
+$2 = 评估体验卡顿的把控线，默认100ms  
+$3 = 输出类型：  
 		0) ~ 默认只输出帧率  
 		1）~ 增加APP内容两帧间隔 >42ms 的单帧信息  
 		2）~ 增加绘制间隔 >vsync间隔的单帧信息  
 		3）~ 只输出APP内容两帧间隔 >42ms 的单帧信息  
 		4）~ 只输出绘制间隔 >vsync间隔的单帧信息  
-* $4 = 检查输出结果的间隔，默认间隔1秒  
-* $5 = 检查输出时，满足？帧以上输出条件的才输出  
+$4 = 检查输出结果的间隔，默认间隔1秒  
+$5 = 检查输出时，满足？帧以上输出条件的才输出  
   
 预期监控时长结束后，停止监控：  
 `kill cat /sys/kernel/debug/tracing/trace_pipe 的进程 ` 
