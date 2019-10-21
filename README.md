@@ -12,7 +12,7 @@
 * 3、停止获取：  
 `atrace gfx --async_stop 1>/dev/null`  
 * 4、解析规则：  
-（1）只处理类别为C和postComposition的信息（postComposition：合成后处理,将图像传递到物理屏幕。）  
+（1）只处理类别为C和postFramebuffer（postFramebuffer函数就是告诉HWC开始做最后的合成了，postComposition：合成后处理,将图像传递到物理屏幕。由于postComposition并不是都有用postFramebuffer）  
 （2）postComposition前完成的surface信息作为窗口名  
 （3）`TX - *`格式的信息为app启动、退出。部分Surface更新，按是否存在记录0/1  
 （4）postComposition之后最近一个Vsync记录绘制时间  
@@ -39,6 +39,7 @@
 脚本文件：
 ------
 * 监控脚本gfx.sh  
+注：1、有不支持awk中调用外部命令执行情况，增加：gfx_no_system.sh  
 `adb shell`    
 `sh /data/local/tmp/gfx.sh`    
 * GFX()参数说明：  
