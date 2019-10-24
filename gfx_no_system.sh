@@ -75,12 +75,6 @@ do
     esac
 done
 
-if [ $# -eq 3 -a ! -z $3 ];then
-	fames=$3
-else
-	fames=20
-fi
-
 #参数说明
 ## $1 = 目标帧率
 ## $2 = 评估体验卡顿的把控线
