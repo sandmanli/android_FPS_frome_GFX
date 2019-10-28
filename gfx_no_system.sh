@@ -247,25 +247,21 @@ $bb awk -F "|" \
 					if(l>2){ \
 						l=split($3,tmp,"/"); \
 						if(l>1){ \
-							sv=$3; \
 							l=split($3,Check," "); \
 							if(l==1){ \
 								app=tmp[1]; \
 								activity=$3 \
 							} \
-						}else{ \
-							sv=$3 \
 						} \
-					}else{ \
-						sv=$3 \
-					} \
+					}; \
+					if($3~/SurfaceTexture/)sv="SurfaceTexture";else	sv=$3; \
 				} \
 			} \
 		} \
 	} \
 }' /sys/kernel/debug/tracing/trace_pipe &
 
-#获取cat进程pid
+#获取进程pid
 echo Pid=$!
 log "Stop: atrace gfx --async_stop"
 #等待子进程退出

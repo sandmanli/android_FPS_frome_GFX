@@ -250,18 +250,14 @@ $bb awk -F "|" \
 								if(l>2){ \
 									l=split($3,tmp,"/"); \
 									if(l>1){ \
-										sv=$3; \
 										l=split($3,Check," "); \
 										if(l==1){ \
 											app=tmp[1]; \
 											activity=$3 \
 										} \
-									}else{ \
-										sv=$3 \
 									} \
-								}else{ \
-									sv=$3 \
-								} \
+								}; \
+								if($3~/SurfaceTexture/)sv="SurfaceTexture";else	sv=$3; \
 							} \
 						} \
 					} \
