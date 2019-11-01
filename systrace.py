@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import codecs
 import datetime as dt
 import os
@@ -5,9 +6,6 @@ import pandas as pd
 import sys
 import time
 
-# -*- coding: utf-8 -*-
-reload(sys)
-sys.setdefaultencoding( "utf-8" )
 
 def log(info):
     print('%s %s'%(dt.datetime.now(), info))
