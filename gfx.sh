@@ -92,7 +92,7 @@ if [ `cat /sys/kernel/debug/tracing/tracing_on` -eq 1 ];then
 	echo "atrace gfx stop"
 	atrace gfx --async_stop 1>/dev/null &
 	$bb sleep 3
-	kill $!
+	kill $! 2>/dev/null
 fi
 #vsync 间隔获取
 local sync=`dumpsys SurfaceFlinger --latency|$bb awk 'NR==1{r=$1/1000000;if(r<0)r=$1/1000;print r}'`
@@ -291,7 +291,7 @@ if [ `cat /sys/kernel/debug/tracing/tracing_on` -eq 1 ];then
 	echo "finish: atrace gfx stop"
 	atrace gfx --async_stop 1>/dev/null &
 	$bb sleep 3
-	kill $!
+	kill $! 2>/dev/null
 fi
 }
 
